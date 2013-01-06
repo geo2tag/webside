@@ -134,7 +134,7 @@
 
 	<target name="javac" depends="jgeo, libs" description="Compile java source to bytecode">
 		<mkdir dir="war/WEB-INF/classes" />
-		<javac srcdir="src" includes="**" encoding="utf-8" destdir="war/WEB-INF/classes" source="1.5" target="1.5" nowarn="true" debug="true" debuglevel="lines,vars,source">
+		<javac includeantruntime="false" srcdir="src" includes="**" encoding="utf-8" destdir="war/WEB-INF/classes" source="1.5" target="1.5" nowarn="true" debug="true" debuglevel="lines,vars,source">
 			<classpath refid="project.class.path" />
 		</javac>
 		<copy todir="war/WEB-INF/classes">
@@ -261,12 +261,12 @@
 
 	<!-- JGEO CORE -->
 	<target name="jgeo">
-		<ant antfile="../jgeo/build.xml" dir="../jgeo/" target="all"/>
+		<ant antfile="build.xml" dir="../jgeo/" target="all"/>
 		<copy todir="lib" file="../jgeo/jgeo.jar" />
 	</target>
 
 	<target name="jgeo-clean">
-		<ant antfile="../jgeo/build.xml" dir="../jgeo/" target="clean"/>
+		<ant antfile="build.xml" dir="../jgeo/" target="clean"/>
 	</target>
 
 	<target name = "prepare-libs">
