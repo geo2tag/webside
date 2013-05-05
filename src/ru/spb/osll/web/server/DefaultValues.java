@@ -44,6 +44,6 @@ public class DefaultValues {
 	public static final String SERVER_URL = "server_url";
 	
 	// Default settings
-	public static final String DEFAULT_SERVER_URL_VALUE = "http://tracks.osll.spb.ru:81/";
+	public static final String DEFAULT_SERVER_URL_VALUE = "http://demo64.geo2tag.org/";
 	
 }
