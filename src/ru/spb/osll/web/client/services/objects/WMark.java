@@ -144,17 +144,5 @@ public class WMark implements Serializable {
 		return channel;
 	}
 
-	// FIXME
-	// This part will be deleted  
-	// after removing  DB access
-	private long id = -1;
-	
-	public long getId() {
-		return id;
-	}
-	
-	public void setId(long id) {
-		this.id = id;
-	}
 	
 }

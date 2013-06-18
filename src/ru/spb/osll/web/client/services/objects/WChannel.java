@@ -105,17 +105,5 @@ public class WChannel implements Serializable, IsSerializable {
 		return title;
 	}
 
-	// FIXME
-	// This part will be deleted  
-	// after removing  DB access 
-	private long id; 
-	
-	public long getId() {
-		return id;
-	}
-	
-	public void setId(long id) {
-		this.id = id;
-	}
 
 }

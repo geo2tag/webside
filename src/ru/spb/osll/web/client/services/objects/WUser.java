@@ -90,19 +90,8 @@ public class WUser extends Response implements Serializable, IsSerializable {
 	
 	@Override
 	public String toString() {
-		return "user: " + id + " \t| " + login + " \t| " + password + " \t| " + email + " \t| "+ token;
+		return "user: " + login + " \t| " + password + " \t| " + email + " \t| "+ token;
 	}
 	
-    // FIXME
-    // This part will be deleted  
-    // after removing  DB access 
-	private long id; 
-    public long getId() {
-        return id;
-    }
-    
-    public void setId(long id) {
-        this.id = id;
-    }
 
 }

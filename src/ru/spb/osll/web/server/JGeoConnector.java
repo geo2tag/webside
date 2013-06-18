@@ -57,7 +57,6 @@ public class JGeoConnector {
 		final WMark wMark = new WMark();
 		SimpleDateFormat date = new SimpleDateFormat("dd MM yyyy hh:mm:ss.SSS");
 		wMark.setDescription(mark.getDescription());
-		wMark.setId(mark.getId());
 		wMark.setLabel(mark.getTitle());
 		wMark.setLatitude((float) mark.getLatitude());
 		wMark.setLongitude((float) mark.getLongitude());
