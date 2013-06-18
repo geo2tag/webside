@@ -19,6 +19,9 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 
 import com.google.gwt.user.client.ui.*;
 import ru.spb.osll.web.client.ui.widgets.*;
+import ru.spb.osll.web.client.ui.core.*;
+import ru.spb.osll.web.client.ui.image.Images;
+
 
 public class GTShell extends Composite {
 
@@ -37,6 +40,7 @@ public class GTShell extends Composite {
 	private Anchor m_authLink;
 	private Anchor m_regLink;
 	private GTSiteMap m_siteMap;
+
 	
 	public static GTShell Instance;
 	
@@ -45,7 +49,7 @@ public class GTShell extends Composite {
 		Instance = this;
 		
 		m_siteMap = new GTSiteMap();
-		mainMenuContainer.add(m_siteMap.getMenu());
+		mainMenuContainer.add(m_siteMap.getLogedOffMenu());
 
 		m_regLink = new Anchor(Localizer.res().registration());
 		m_regLink.addClickHandler(m_regHandler);
@@ -136,7 +140,9 @@ public class GTShell extends Composite {
 					setContent(LoginWidget.Instance(), false);
 				} else {
 					GTState.Instanse().setCurUser(user); 
+					changeMenu(m_siteMap.getLogedInMenu());
 					setContent(Channels.Instance(), false);
+					
 				}
 				refreshAutorizedStatus();
 			}
@@ -167,11 +173,23 @@ public class GTShell extends Composite {
 		}
 	};
 	
+	private void changeMenu(SimpleMenu newMenu){
+		SimpleMenu oldMenu = (SimpleMenu)mainMenuContainer.iterator().next();
+		
+		if (!oldMenu.equals(newMenu)){
+			mainMenuContainer.setWidget(newMenu);
+			//mainMenuContainer.remove(oldMenu);
+			//mainMenuContainer.add(newMenu);
+		}
+	}
+	
+	
 	private void logout(){
 		final AsyncCallback<Boolean> callback = new AsyncCallback<Boolean>() {
 			@Override
 			public void onSuccess(Boolean result) {
 				GTState.Instanse().setCurUser(null);
+				changeMenu(m_siteMap.getLogedOffMenu());
 			}		
 			@Override
 			public void onFailure(Throwable caught) {

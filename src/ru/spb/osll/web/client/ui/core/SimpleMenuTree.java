@@ -83,6 +83,8 @@ public class SimpleMenuTree {
 		public GroupItem (final String name, final ImageResource im){
 			super(name, im);
 		}
+		
+		
 		public void addMenuItem(SimpleComposite w){
 			m_items.add(new MenuItem(w.getName(), w.getImage(), w));
 		}

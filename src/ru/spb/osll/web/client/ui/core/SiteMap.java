@@ -39,21 +39,38 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.google.gwt.user.client.ui.Widget;
+import ru.spb.osll.web.client.GTState;
 
 public abstract class SiteMap {
-	SimpleMenu m_menu;
+	SimpleMenu m_logedOffMenu = null;
+	SimpleMenu m_logedInMenu = null;
 	private Map<String, Widget> m_siteMap = new HashMap<String, Widget>();
 	
-	protected abstract SimpleMenu createMenu();
+	protected abstract SimpleMenu createLogedOffMenu();
+	protected abstract SimpleMenu createLogedInMenu();
 	protected abstract void initSiteMap();
 	
 	public SiteMap(){
-		m_menu = createMenu();
+		m_logedOffMenu = createLogedOffMenu();
 		initSiteMap();
 	}
 
 	public SimpleMenu getMenu(){
-		return m_menu;
+		if (GTState.Instanse().getCurUser() == null){
+			return m_logedOffMenu;
+		}
+		return m_logedInMenu;
+	}
+	
+	public SimpleMenu getLogedOffMenu(){
+		return m_logedOffMenu;
+	}
+	
+	public SimpleMenu getLogedInMenu(){
+		if (m_logedInMenu == null){
+			m_logedInMenu = createLogedInMenu();
+		}
+		return m_logedInMenu;
 	}
 	
 	protected void addWidget(Widget w){
@@ -68,7 +85,7 @@ public abstract class SiteMap {
 		if (w == null){
 			return "";
 		}
-		final String group = m_menu.getGroup(w);
+		final String group = getMenu().getGroup(w);
 		final String token = getTokenByClass(w.getClass());
 		return group == null ? token : group + "_" + token;
 	}

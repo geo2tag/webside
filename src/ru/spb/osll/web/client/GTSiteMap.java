@@ -23,8 +23,10 @@ public class GTSiteMap extends SiteMap {
 		addWidget(RegistrationWidget.Instance());
 	}
 	
+
+	
 	@Override
-	protected SimpleMenu createMenu() {
+	protected SimpleMenu createLogedInMenu() {
 		return new SimpleMenu() {
 
 			@Override
@@ -40,6 +42,45 @@ public class GTSiteMap extends SiteMap {
 					groupItem.addMenuItem(Channels.Instance());
 					groupItem.addMenuItem(TagsTableWidget.Instance());
 					groupItem.addMenuItem(TagsMapWidget.Instance());
+				}
+
+				{
+					group = Localizer.res().menuGrForUser();
+					groupItem = menu.getGroupMenuItem(group, Images.res().folder());
+					groupItem.addMenuItem(LoginWidget.Instance());
+					groupItem.addMenuItem(RegistrationWidget.Instance());
+				}				
+			}
+
+			@Override
+			protected void setContentWidget(Widget widget) {
+				GTShell shell = GTShell.Instance;
+				if (shell != null){
+					shell.setContent(widget);
+				}				
+			}
+			
+		};
+	}
+	
+	
+	@Override
+	protected SimpleMenu createLogedOffMenu() {
+		return new SimpleMenu() {
+
+			@Override
+			protected void initMenu() {
+				final SimpleMenuTree menu = getMenuTree();
+				GroupItem groupItem;
+				String group;
+				{
+					group = Localizer.res().menuGrServices();
+					groupItem = menu.getGroupMenuItem(group, Images.res().folder());
+					groupItem.addMenuItem(HomePage.Instance());
+					groupItem.addMenuItem(TestAccountWidget.Instance());
+					//groupItem.addMenuItem(Channels.Instance());
+					//groupItem.addMenuItem(TagsTableWidget.Instance());
+					//groupItem.addMenuItem(TagsMapWidget.Instance());
 				}
 
 				{

@@ -43,7 +43,7 @@ import ru.spb.osll.web.client.services.objects.WChannel;
 import ru.spb.osll.web.client.services.objects.WUser;
 
 public class GTState {
-	private WUser m_currenUser;
+	private WUser m_currenUser = null;
 	private WChannel m_currenChannel;
 
 	private List<UserStateListener> m_userHandlers;
