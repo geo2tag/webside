@@ -82,7 +82,8 @@ public class GTShell extends Composite {
 		if (useHistory) {
 			History.newItem(token, false);
 		}
-		m_siteMap.getMenu().setSecectedGroup(content);
+		SimpleMenu menu = (SimpleMenu)mainMenuContainer.getWidget();
+		menu.setSecectedGroup(content);
 		contentPanel.setWidget(content);   
 	}
 
