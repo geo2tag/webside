@@ -130,6 +130,7 @@ public class OSMWidget extends BaseMapWidget {
 						map.removePopup(m_curPopup);
 					}
 					m_curPopup = getPopupFrame(longLat, html);
+					m_curPopup.setAutoSize(true);
 					m_mapWidget.getMap().addPopup(m_curPopup);
 				}
 			});

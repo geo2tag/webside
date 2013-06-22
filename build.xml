@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <project name="Geo2tag" default="build" basedir=".">
-<property name="version" value="0.20.x" />
+<!--<property name="version" value="" /> -->
 
+<target name="getversion" >
+<exec executable="sh" outputproperty="version">
+    <arg value="-c"/>
+    <arg value="git tag | head -n 1" />
+</exec>
+</target>
 	<!--
  * Copyright 2011-2012 OSLL
  *
@@ -250,7 +256,7 @@
 		</mail>
 	</target>
 
-	<target name="deploy-refresh-info" depends="deploy">
+	<target name="deploy-refresh-info" depends="getversion,deploy">
 		<tstamp>
 			<format property="NOW" pattern="yyyy MMMM dd HH:mm:ss" locale="en"/>
 		</tstamp>
