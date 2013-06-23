@@ -41,14 +41,14 @@ import ru.spb.osll.web.client.services.objects.WMark;
 public class HTMLUtil {
 	
 	public static String toHTML(WMark tag) {
-		StringBuffer sb = new StringBuffer().append("<b>").
+		StringBuffer sb = new StringBuffer().append("<div style=\"width: 200px;white-space: pre-line;word-wrap: break-word;text-align:justify\"><b>").
 			append(tag.getLabel()).append("</b><br>");
 		if (tag.getUrl() != null){
 			sb.append(htmlLink(tag.getUrl(), tag.getDescription())).append("<br>");
 		} else {
 			sb.append(tag.getDescription()).append("<br>");
 		}
-		sb.append(tag.getTime().toGMTString()).append("<br>");
+		sb.append(tag.getTime().toGMTString()).append("<br></div>");
 		return sb.toString();
 	}
 		

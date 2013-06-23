@@ -130,7 +130,6 @@ public class OSMWidget extends BaseMapWidget {
 						map.removePopup(m_curPopup);
 					}
 					m_curPopup = getPopupFrame(longLat, html);
-					m_curPopup.setAutoSize(true);
 					m_mapWidget.getMap().addPopup(m_curPopup);
 				}
 			});
@@ -169,8 +168,8 @@ public class OSMWidget extends BaseMapWidget {
 	}
 	
 	private FramedCloud getPopupFrame(LonLat lonLat, String html){
-		final FramedCloud frame = new FramedCloud("fullmess", lonLat, null, html, null, true);
-		frame.setAutoSize(true);
+		final FramedCloud frame = new FramedCloud("fullmess", lonLat, new Size(100, 100), html, null, true);
+//		frame.setAutoSize(true);
 		frame.setPanMapIfOutOfView(true);
 		return frame; 
 	}
