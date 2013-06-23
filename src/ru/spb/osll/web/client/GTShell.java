@@ -106,6 +106,11 @@ public class GTShell extends Composite {
 			@Override
 			public void onSuccess(WUser user) {
 				GTState.Instanse().setCurUser(user); 
+				if (user != null){
+					changeMenu(m_siteMap.getLogedInMenu());
+				} else{
+					changeMenu(m_siteMap.getLogedOffMenu());
+				}
 				refreshAutorizedStatus();
 			}
 			@Override
